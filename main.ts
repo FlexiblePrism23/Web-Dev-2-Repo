@@ -1,16 +1,39 @@
-const kilogramsToPounds = (kilograms: number): number => kilograms * 2.20462;
 const milesToKilometres = (miles: number): number => miles * 1.609344;
+const celsiusToFahrenheit = (celsius: number): number => {return (celsius * 9 / 5) + 32;
+};
+const fahrenheitToCelsius = (fahrenheit: number): number => {return (fahrenheit - 32) * 5 / 9;
+};
+const kilogramsToPounds = (kilograms: number): number => kilograms * 2.20462;
+const poundsToKilograms = (pounds: number): number => pounds / 2.20462;
+
+const weightInput = document.getElementById("weight-input") as HTMLInputElement;
+const weightText = document.getElementById("weight-text") as HTMLInputElement;
+const weightResultText = document.getElementById("weight-result-text") as HTMLParagraphElement;
+const weightButton = document.getElementById("weight-button") as HTMLButtonElement;
+const weightResult = document.getElementById("weight-result") as HTMLParagraphElement;
+const weightInputLabel = document.getElementById("weight-input-label") as HTMLLabelElement;
+const weightConversion = document.getElementById("weight-conversion-button") as HTMLButtonElement;
+
+let kgToLb: boolean = true;
+
+const switchWeightUnit = (): void => {
+    kgToLb = !kgToLb;
+    weightText.textContent = kgToLb ? 'Kilograms → Pounds' : 'Pounds → Kilograms';
+    weightInputLabel.textContent = kgToLb ? 'Kilograms' : 'Pounds';
+    weightResultText.textContent = kgToLb ? 'Pounds' : 'Kilograms';
+    weightResult.textContent = '0';
+}
+
 const litresToGallons = (litres: number): number => litres * 0.264172;
 
-const kgInput = document.getElementById("kg-input") as HTMLInputElement;
-const kgButton = document.getElementById("kg-button") as HTMLButtonElement;
-const kgResult = document.getElementById("kg-result") as HTMLParagraphElement;
-const handleKgConvert = (): void => {
-const kilograms: number = Number(kgInput.value);
-const pounds: number = kilogramsToPounds(kilograms);
-kgResult.textContent = pounds.toFixed(2);
+const handleWeightConvert = (): void => {
+const inputWeight: number = Number(weightInput.value);
+const result: number = kgToLb ? kilogramsToPounds(inputWeight) : poundsToKilograms(inputWeight);
+weightResult.textContent = result.toFixed(2);
 };
-kgButton.addEventListener("click", handleKgConvert)
+
+weightButton.addEventListener("click", handleWeightConvert);
+weightConversion.addEventListener("click", switchWeightUnit);
 
 const milesInput = document.getElementById("miles-input") as HTMLInputElement;
 const milesButton = document.getElementById("miles-button") as HTMLButtonElement;
@@ -22,12 +45,33 @@ milesResult.textContent = kilometres.toFixed(2);
 };
 milesButton.addEventListener("click", handleMilesConvert)
 
-const litresInput = document.getElementById("litres-input") as HTMLInputElement;
-const litresButton = document.getElementById("litres-button") as HTMLButtonElement;
-const litresResult = document.getElementById("litres-result") as HTMLParagraphElement;
-const handleLitresConvert = (): void => {
-const litres: number = Number(litresInput.value);
-const gallons: number = litresToGallons(litres);
-litresResult.textContent = gallons.toFixed(2);
+
+
+
+
+const celsiusInput = document.getElementById("celsius-input") as HTMLInputElement;
+const celsiusButton = document.getElementById("celsius-button") as HTMLButtonElement;
+const celsiusResult = document.getElementById("celsius-result") as HTMLParagraphElement;
+const handleCelsiusConvert = (): void => {
+const celsius: number = Number(celsiusInput.value);
+const fahrenheit: number = celsiusToFahrenheit(celsius);
+celsiusResult.textContent = fahrenheit.toFixed(2);
 };
-litresButton.addEventListener("click", handleLitresConvert);
+celsiusButton.addEventListener("click", handleCelsiusConvert);
+
+
+
+
+const fahrenheitInput = document.getElementById("fahrenheit-input") as HTMLInputElement;
+const fahrenheitButton = document.getElementById("fahrenheit-button") as HTMLButtonElement;
+const fahrenheitResult = document.getElementById("fahrenheit-result") as HTMLParagraphElement;
+const handleFahrenheitConvert = (): void => {
+const fahrenheit: number = Number(fahrenheitInput.value);
+const celsius: number = fahrenheitToCelsius(fahrenheit);
+fahrenheitResult.textContent = celsius.toFixed(2);
+};
+fahrenheitButton.addEventListener("click", handleFahrenheitConvert);
+
+
+
+
