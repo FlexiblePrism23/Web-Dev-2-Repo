@@ -1,6 +1,9 @@
 const kilogramsToPounds = (kilograms: number): number => kilograms * 2.20462;
 const milesToKilometres = (miles: number): number => miles * 1.609344;
-const litresToGallons = (litres: number): number => litres * 0.264172;
+const celsiusToFahrenheit = (celsius: number): number => {return (celsius * 9 / 5) + 32;
+};
+const fahrenheitToCelsius = (fahrenheit: number): number => {return (fahrenheit - 32) * 5 / 9;
+};
 
 const kgInput = document.getElementById("kg-input") as HTMLInputElement;
 const kgButton = document.getElementById("kg-button") as HTMLButtonElement;
@@ -22,12 +25,33 @@ milesResult.textContent = kilometres.toFixed(2);
 };
 milesButton.addEventListener("click", handleMilesConvert)
 
-const litresInput = document.getElementById("litres-input") as HTMLInputElement;
-const litresButton = document.getElementById("litres-button") as HTMLButtonElement;
-const litresResult = document.getElementById("litres-result") as HTMLParagraphElement;
-const handleLitresConvert = (): void => {
-const litres: number = Number(litresInput.value);
-const gallons: number = litresToGallons(litres);
-litresResult.textContent = gallons.toFixed(2);
+
+
+
+
+const celsiusInput = document.getElementById("celsius-input") as HTMLInputElement;
+const celsiusButton = document.getElementById("celsius-button") as HTMLButtonElement;
+const celsiusResult = document.getElementById("celsius-result") as HTMLParagraphElement;
+const handleCelsiusConvert = (): void => {
+const celsius: number = Number(celsiusInput.value);
+const fahrenheit: number = celsiusToFahrenheit(celsius);
+celsiusResult.textContent = fahrenheit.toFixed(2);
 };
-litresButton.addEventListener("click", handleLitresConvert);
+celsiusButton.addEventListener("click", handleCelsiusConvert);
+
+
+
+
+const fahrenheitInput = document.getElementById("fahrenheit-input") as HTMLInputElement;
+const fahrenheitButton = document.getElementById("fahrenheit-button") as HTMLButtonElement;
+const fahrenheitResult = document.getElementById("fahrenheit-result") as HTMLParagraphElement;
+const handleFahrenheitConvert = (): void => {
+const fahrenheit: number = Number(fahrenheitInput.value);
+const celsius: number = fahrenheitToCelsius(fahrenheit);
+fahrenheitResult.textContent = celsius.toFixed(2);
+};
+fahrenheitButton.addEventListener("click", handleFahrenheitConvert);
+
+
+
+
