@@ -14,32 +14,31 @@
           <h1 class="text-lg font-bold text-slate-900">Unit Converter</h1>
           <span
             class="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
-            Group 5 &middot; Assignment 1
+            Group 5 : Assignment 1
           </span>
       </div>
 
       <div class="max-w-8xl mx-auto px-2 py-2 flex items-center justify-center border-t border-slate-200">
         <nav>
-          <div>
-            <a href="#weight">
+          <div class="w-full bg-blue-100 py-2">
+            <!-- Navbar button weight -->
             <button
-              class="text-sm text-white bg-blue-500 px-2 py-1 font-semibold rounded-lg transition cursor-pointer mx-4"
-              href>
+              id="navBarWeightButton"
+              class="text-sm text-white bg-blue-500 px-2 py-1 font-semibold rounded-lg mx-4">
               Weight
-            </button>
-            </a>
-            <a href="#distance">
-            <button
-              class="text-sm text-white bg-green-500 px-2 py-1 font-semibold rounded-lg transition cursor-pointer mx-4">
+            </button>  
+            <!-- Navbar button distance  -->
+            <button 
+              id="navBarDistanceButton"
+              class="text-sm text-white bg-green-500 px-2 py-1 font-semibold rounded-lg mx-4">
               Distance
-            </button>
-            </a>
-            <a href="#temperature">
+            </button> 
+            <!-- Navbar button temperature -->
             <button
-              class="text-sm text-white bg-violet-600 px-2 py-1 font-semibold rounded-lg transition cursor-pointer mx-4">
+              id="navBarTemperatureButton"
+              class="text-sm text-white bg-violet-600 px-2 py-1 font-semibold rounded-lg mx-4">
               Temperature
             </button>
-            </a>
           </div>
         </nav>
       </div>
@@ -54,63 +53,24 @@
       </p>
     </section>
     <main class="max-w-4xl mx-auto px-6 pb-16">
-      <!-- the three cards go in here -->
-      <div id="weight" bg-white rounded-2xl shadow-md p-6">
-        <div class="flex justify-between">
-          <h3 class="text-lg font-bold text-slate-900">Weight</h3>
-          <button
-            id="weight-conversion-button"
-            class="text-sm text-white bg-blue-500 px-4 py-1 font-semibold rounded-lg transition cursor-pointer">
-            Switch Conversion
-          </button>
-        </div>
-        <p class="text-sm text-slate-500 mt-1">
-          Convert between Kilograms and Pounds
-        </p>
-        <h4 id="weight-text" class="text-lg font-semibold text-slate-800 mt-6">
-          Kilograms → Pounds
-        </h4>
-        <label
-          for="weight-input"
-          id="weight-input-label"
-          class="block text-sm font-medium text-slate-700 mt-5 mb-2">
-          Kilograms
-        </label>
-        <input
-          id="weight-input"
-          type="number"
-          value="0"
-          class="w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 focus:border-blue-500 focus:outline-none" />
-        <button
-          id="weight-button"
-          class="w-full mt-4 rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700 transition cursor-pointer">
-          Convert
-        </button>
-        <div class="mt-5 rounded-lg bg-slate-50 p-4 text-center">
-          <p
-            id="weight-result-text"
-            class="text-xs uppercase tracking-wide text-slate-500">
-            Pounds
-          </p>
-          <p id="weight-result" class="text-2xl font-bold text-blue-600 mt-1">
-            0.00
-          </p>
-        </div>
-      </div>
 
-      <div id="temperature"class="bg-white rounded-2xl shadow-md p-6 mt-6">
-        <h3 class="text-2xl font-bold text-slate-900">Temperature</h3>
+    <!-- Your comment here -->
+    
 
-        <p class="text-base text-slate-500 mt-2">
+      <div id="card" class="bg-white rounded-2xl shadow-md p-6 mt-6">
+        <h3 id="card-title" class="text-2xl font-bold text-slate-900">Temperature</h3>
+
+        <p id="card-description" class="text-base text-slate-500 mt-2">
           Convert between Celsius and Fahrenheit
         </p>
 
         <div class="mt-6">
-          <h4 class="text-lg font-semibold text-slate-800">
+          <h4 id="first-heading" class="text-lg font-semibold text-slate-800">
             Celsius → Fahrenheit
           </h4>
 
           <label
+            id="first-label"
             for="celsius-input"
             class="block text-base font-medium text-slate-700 mt-5 mb-2">
             Celsius
@@ -124,29 +84,30 @@
 
           <button
             id="celsius-button"
-            class="w-full mt-4 rounded-lg bg-violet-600 px-4 py-2 font-semibold text-white hover:bg-violet-700 transition cursor-pointer">
+            class="w-full mt-4 rounded-lg bg-violet-600 px-4 py-2 font-semibold text-white hover:bg-violet-700">
             Convert
           </button>
 
           <div class="mt-5 rounded-lg bg-slate-50 p-4 text-center">
-            <p class="text-xs uppercase tracking-wide text-slate-500">
-              Fahrenheit
+            <p id="first-result-label"
+                class="text-xs uppercase tracking-wide text-slate-500">
+                Fahrenheit
             </p>
 
-            <p
-              id="celsius-result"
-              class="text-2xl font-bold text-violet-600 mt-1">
-              32.00
+            <p id="celsius-result"
+                class="text-2xl font-bold text-violet-600 mt-1">
+                32.00
             </p>
           </div>
         </div>
 
         <div class="mt-8">
-          <h4 class="text-lg font-semibold text-slate-800">
+          <h4 id="second-heading" class="text-lg font-semibold text-slate-800">
             Fahrenheit → Celsius
           </h4>
 
           <label
+            id="second-label"
             for="fahrenheit-input"
             class="block text-base font-medium text-slate-700 mt-5 mb-2">
             Fahrenheit
@@ -160,12 +121,12 @@
 
           <button
             id="fahrenheit-button"
-            class="w-full mt-4 rounded-lg bg-violet-600 px-4 py-2 font-semibold text-white hover:bg-violet-700 transition cursor-pointer">
+            class="w-full mt-4 rounded-lg bg-violet-600 px-4 py-2 font-semibold text-white hover:bg-violet-700">
             Convert
           </button>
 
           <div class="mt-5 rounded-lg bg-slate-50 p-4 text-center">
-            <p class="text-xs uppercase tracking-wide text-slate-500">
+            <p id="second-result-label" class="text-xs uppercase tracking-wide text-slate-500">
               Celsius
             </p>
 
