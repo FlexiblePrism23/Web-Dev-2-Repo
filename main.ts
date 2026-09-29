@@ -61,6 +61,7 @@ const getConverter = (from: string, to: string) => {
 
 
 // Reads input so we can work with either number or array of numbers
+
 const readInput = (input: string): number | number[] => {
     const textValues = input.split(",");
     const values: number[] = [];
@@ -76,6 +77,7 @@ const readInput = (input: string): number | number[] => {
 
 
 // Displays either a result or a list of results
+
 const displayResult = (result: number | number[]): string => {
 
     if (Array.isArray(result)) {
@@ -190,7 +192,7 @@ let currentConverter = "temperature";
 
 
 
-// Evetn listeners
+// Event listeners
 
 // Navbar HTML Change -> *Distance listener*
 distanceNavButton.addEventListener("click", () => {
@@ -234,7 +236,7 @@ weightNavButton.addEventListener("click", () => {
     secondResult.className = "text-2xl font-bold text-blue-500 mt-1";
 });
 
-// Navbar HTML Chagne -> *Temperature listener*
+// Navbar HTML Change -> *Temperature listener*
 temperatureNavButton.addEventListener("click", () => {
     currentConverter = "temperature";
     title.textContent = "Temperature";
