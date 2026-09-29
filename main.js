@@ -1,10 +1,12 @@
 "use strict";
 /*
-Authors: Sebastian, Noah, Munachi
+Authors: Sebastian Brown, Noah Stelmack, Munachi Amadlike
 Date: September 28, 2026
-Our website converts weight, distance, and temperature.
+Our website converts between units of weight, distance, and temperature.
+The user can input a single number like '2' or a list of numbers like '2, 7, 10' into our convertor.
 The program processes the input using metric or imperial conversions.
-The converted value or list of values is displayed on our webpage.
+Each number is converted using conversion functions.
+The converted value or list of values is displayed on our webpage as a list.
 */
 // Conversion math functions
 const milesToKilometres = (miles) => miles * 1.609344;
@@ -31,32 +33,41 @@ const getConverter = (from, to) => {
     else if (from === "c" && to === "f") {
         conversion = celsiusToFahrenheit;
     }
-    else if (from === "f" && to === "c") {
+    else {
         conversion = fahrenheitToCelsius;
     }
-    else {
-        throw new Error("Invalid conversion");
-    }
-    // Returns an arrow function that works with one number or an array
+    // Returns an arrow function that works with one number or array
     return (value) => {
         if (Array.isArray(value)) {
-            return value.map(conversion);
+            const convertedValues = [];
+            for (let number of value) {
+                convertedValues.push(conversion(number));
+            }
+            return convertedValues;
         }
         return conversion(value);
     };
 };
-// ADDED - turns input into either one number or an array of numbers
+// Reads input so we can work with either number or array of numbers
 const readInput = (input) => {
-    const values = input.split(",").map(value => Number(value.trim()));
+    const textValues = input.split(",");
+    const values = [];
+    for (let value of textValues) {
+        values.push(Number(value.trim()));
+    }
     if (values.length === 1) {
         return values[0];
     }
     return values;
 };
-// ADDED - displays either one result or a list of results
+// Displays either a result or a list of results
 const displayResult = (result) => {
     if (Array.isArray(result)) {
-        return result.map(value => value.toFixed(2)).join(", ");
+        const displayValues = [];
+        for (let value of result) {
+            displayValues.push(value.toFixed(2));
+        }
+        return displayValues.join(", ");
     }
     return result.toFixed(2);
 };
@@ -66,7 +77,7 @@ const celsiusResult = document.getElementById("celsius-result");
 const fahrenheitInput = document.getElementById("fahrenheit-input");
 const fahrenheitButton = document.getElementById("fahrenheit-button");
 const fahrenheitResult = document.getElementById("fahrenheit-result");
-// CHANGED - now works for temperature, distance, and weight
+// Converts to fahrenheit
 const handleFahrenheitConvert = () => {
     const input = readInput(fahrenheitInput.value);
     let converter;
@@ -82,7 +93,7 @@ const handleFahrenheitConvert = () => {
     const result = converter(input);
     fahrenheitResult.textContent = displayResult(result);
 };
-// CHANGED - now works for temperature, distance, and weight
+// Converts to celsius
 const handleCelsiusConvert = () => {
     const input = readInput(celsiusInput.value);
     let converter;
@@ -101,7 +112,6 @@ const handleCelsiusConvert = () => {
 celsiusButton.addEventListener("click", handleCelsiusConvert);
 fahrenheitButton.addEventListener("click", handleFahrenheitConvert);
 // Navbar code
-let current = "temperature";
 // Getting HTML elements
 // Getting navbar buttons
 const weightNavButton = document.getElementById("navBarWeightButton");
