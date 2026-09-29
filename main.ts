@@ -3,28 +3,6 @@ const celsiusToFahrenheit = (celsius: number): number => {return (celsius * 9 / 
 };
 const fahrenheitToCelsius = (fahrenheit: number): number => {return (fahrenheit - 32) * 5 / 9;
 };
-const kilogramsToPounds = (kilograms: number): number => kilograms * 2.20462;
-const poundsToKilograms = (pounds: number): number => pounds / 2.20462;
-
-const weightInput = document.getElementById("weight-input") as HTMLInputElement;
-const weightText = document.getElementById("weight-text") as HTMLInputElement;
-const weightResultText = document.getElementById("weight-result-text") as HTMLParagraphElement;
-const weightButton = document.getElementById("weight-button") as HTMLButtonElement;
-const weightResult = document.getElementById("weight-result") as HTMLParagraphElement;
-const weightInputLabel = document.getElementById("weight-input-label") as HTMLLabelElement;
-const weightConversion = document.getElementById("weight-conversion-button") as HTMLButtonElement;
-
-let kgToLb: boolean = true;
-
-const switchWeightUnit = (): void => {
-    kgToLb = !kgToLb;
-    weightText.textContent = kgToLb ? 'Kilograms → Pounds' : 'Pounds → Kilograms';
-    weightInputLabel.textContent = kgToLb ? 'Kilograms' : 'Pounds';
-    weightResultText.textContent = kgToLb ? 'Pounds' : 'Kilograms';
-    weightResult.textContent = '0';
-}
-
-const litresToGallons = (litres: number): number => litres * 0.264172;
 
 const handleWeightConvert = (): void => {
 const inputWeight: number = Number(weightInput.value);
